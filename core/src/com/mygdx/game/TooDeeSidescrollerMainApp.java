@@ -54,22 +54,22 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		Texture right = new Texture(dir + "movingR.png");
 		Texture left = new Texture(dir + "movingL.png");
 		ArrayList<Texture> movingList = new ArrayList<>();
+		movingList.add(0,left);
+		movingList.add(1,right);
 
 		int playerStartx = 0;
 		int playerStarty = 30;
 		playerText = new Texture(dir + "bodyIdle.png");
-		player = new Player(playerStartx, playerStarty, playerText, null);
+		player = new Player(playerStartx, playerStarty, playerText, movingList);
 	}
 
 	@Override
 	public void render() {
-		handleInput();
+		handleCameraInput();
 		camera.update();
 		batch.setProjectionMatrix(camera.combined);
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-
 
 		batch.begin();
 		drawGround();
@@ -79,23 +79,23 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		batch.end();
 	}
 
-	private void handleInput() {
+	private void handleCameraInput() {
 		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
 			camera.zoom += 0.2;
 		}
 		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
 			camera.zoom -= 0.2;
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
 			camera.translate(-3, 0, 0);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_6)) {
 			camera.translate(3, 0, 0);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_5)) {
 			camera.translate(0, -3, 0);
 		}
-		if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_8)) {
 			camera.translate(0, 3, 0);
 		}
 	}
@@ -106,7 +106,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	}
 
 	public void drawPlayer(){
-		if(player.get)
+		//if(player.)
 
 		batch.draw(player.getSkinIdle(), player.getPosX(), player.getPosY());
 	}
