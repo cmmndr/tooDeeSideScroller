@@ -86,7 +86,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		ground.setY(0);
 		ground.setWidth(800);
 		ground.setHeight(30);
-
+		int i;
 		skyList = new LinkedList<Texture>();
 		sky = new Texture(dir + "sky.png");
 
