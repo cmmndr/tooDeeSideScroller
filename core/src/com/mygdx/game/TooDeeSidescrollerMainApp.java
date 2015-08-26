@@ -6,8 +6,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.logic.GameLogic;
+import com.mygdx.game.model.Player;
 
+import java.util.EventListener;
 import java.util.LinkedList;
 
 public class TooDeeSidescrollerMainApp extends ApplicationAdapter {

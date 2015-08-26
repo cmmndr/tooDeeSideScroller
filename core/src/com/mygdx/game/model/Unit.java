@@ -1,19 +1,18 @@
 package com.mygdx.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
 /**
  * Created by Mythix on 26.08.2015.
  */
-public class Unit {
+public class Unit extends Actor{
 
 
     private int posX;
     private int posY;
-    private int height;
-    private int width;
     private Texture skinIdle;
     private ArrayList<Texture> skinMove;
     private int speed;
@@ -93,25 +92,6 @@ public class Unit {
 
     public void moveDown() {
         posY--;
-    }
-
-
-
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
     }
 
     public int getGravity() {
