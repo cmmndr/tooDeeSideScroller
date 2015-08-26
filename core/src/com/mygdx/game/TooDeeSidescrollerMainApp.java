@@ -2,14 +2,15 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.mygdx.game.logic.GameLogic;
 import com.mygdx.game.model.Player;
 
@@ -42,40 +43,54 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		batch = new SpriteBatch();
-		camera = new OrthographicCamera(30, 30 * (h / w));
-		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
-		camera.update();
-		stage = new Stage(new ScreenViewport());
+		stage = new Stage(new FitViewport(w,h), batch);
+		playerInit();
+
 		Gdx.input.setInputProcessor(stage);
 		GameLogic logic = new GameLogic();
 		logic.initiate();
-		playerInit();
+
 		worldInit();
 
 
 	}
 
 	private void playerInit() {
-		Texture right = new Texture(dir + "movingR.png");
-		Texture left = new Texture(dir + "movingL.png");
-		ArrayList<Texture> movingList = new ArrayList<>();
-		movingList.add(0,left);
-		movingList.add(1,right);
-
 		int playerStartx = 0;
 		int playerStarty = 30;
+		ArrayList<Texture> movingList = new ArrayList<>();
 		playerText = new Texture(dir + "bodyIdle.png");
 		player = new Player(playerStartx, playerStarty, playerText, movingList);
+		Texture right = new Texture(dir + "movingR.png");
+		Texture left = new Texture(dir + "movingL.png");
+
+
+		movingList.add(0,left);
+		movingList.add(1, right);
+		stage.addActor(player);
+		Gdx.input.setInputProcessor(stage);
+		player.addListener(new InputListener() {
+
+			@Override
+			public boolean keyDown(InputEvent event, int keycode) {
+				System.out.println("hitler");
+				return super.keyDown(event, keycode);
+			}
+		});
+
+
+
+
 	}
 
 	@Override
 	public void render() {
-		handleCameraInput();
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
+
+
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		stage.act();
+
 		stage.draw();
 		collisionDetect();
 		batch.begin();
@@ -86,26 +101,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		batch.end();
 	}
 
-	private void handleCameraInput() {
-		if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-			camera.zoom += 0.2;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.Q)) {
-			camera.zoom -= 0.2;
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
-			camera.translate(-3, 0, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_6)) {
-			camera.translate(3, 0, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_5)) {
-			camera.translate(0, -3, 0);
-		}
-		if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_8)) {
-			camera.translate(0, 3, 0);
-		}
-	}
+
 
 
 	private void collisionDetect() {
@@ -136,7 +132,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		int y = 31;
 		for(Texture t : skyList){
 
-			batch.draw(sky,x, y);
+			batch.draw(t,x, y);
 			x+=562;
 
 		}
@@ -147,13 +143,13 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 	public void worldInit(){
 		groundText = new Texture(dir + "worldtile.png");
-		groundList = new LinkedList<Rectangle>();
+		groundList = new LinkedList<>();
 		ground = new Rectangle();
 		ground.setX(0);
 		ground.setY(0);
 		ground.setWidth(800);
 		ground.setHeight(30);
-		skyList = new LinkedList<Texture>();
+		skyList = new LinkedList<>();
 		sky = new Texture(dir + "sky.png");
 
 
