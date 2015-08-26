@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.game.logic.GameLogic;
 
 public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	SpriteBatch batch;
@@ -13,6 +14,8 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		GameLogic logic = new GameLogic();
+		logic.initiate();
 		img = new Texture("core/assets/badlogic.jpg");
 	}
 

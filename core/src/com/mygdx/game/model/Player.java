@@ -10,7 +10,13 @@ import java.util.ArrayList;
 public class Player extends Unit{
 
 
+
     public Player(Texture skinIdle, ArrayList<Texture> skinMove) {
         super(skinIdle, skinMove);
     }
+
+
+
+
+
 }

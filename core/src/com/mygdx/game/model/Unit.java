@@ -9,16 +9,20 @@ import java.util.ArrayList;
  */
 public class Unit {
 
+
+    private int posX;
+    private int posY;
     private Texture skinIdle;
     private ArrayList<Texture> skinMove;
     private int speed;
     private int life;
+    private int gravity;
 
 
-public Unit(Texture skinIdle, ArrayList<Texture> skinMove){
-    this.skinIdle = skinIdle;
-    this.skinMove = skinMove;
-}
+    public Unit(Texture skinIdle, ArrayList<Texture> skinMove) {
+        this.skinIdle = skinIdle;
+        this.skinMove = skinMove;
+    }
 
 
     public Texture getSkinIdle() {
@@ -52,4 +56,45 @@ public Unit(Texture skinIdle, ArrayList<Texture> skinMove){
     public void setLife(int life) {
         this.life = life;
     }
+
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+
+    public void moveLeft() {
+        posX--;
+    }
+
+    public void moveRight() {
+        posX++;
+    }
+
+    public void moveUp() {
+        posY++;
+    }
+
+    public void moveDown() {
+        posY--;
+    }
+
+
+
+
+
+
+
 }
