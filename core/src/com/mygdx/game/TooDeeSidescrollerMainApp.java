@@ -29,7 +29,6 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	static Texture groundText;
 	static Texture sky;
 	static String dir = "core/assets/";
-	static Texture bullet;
 
 
 	@Override
@@ -102,6 +101,8 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	public static Texture getBulletTexture(){
 		return bullet;
 	}
+
+	
 //
 
 }
