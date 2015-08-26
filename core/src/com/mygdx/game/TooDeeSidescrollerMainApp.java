@@ -41,10 +41,14 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
-
 		drawGround();
 		drawSky();
+		collisionDetect();
 		batch.end();
+	}
+
+	private void collisionDetect() {
+
 	}
 
 	public void drawGround(){
@@ -80,7 +84,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		ground = new Rectangle();
 		ground.setX(0);
 		ground.setY(0);
-		ground.setWidth(1200);
+		ground.setWidth(800);
 		ground.setHeight(30);
 
 		skyList = new LinkedList<Texture>();
