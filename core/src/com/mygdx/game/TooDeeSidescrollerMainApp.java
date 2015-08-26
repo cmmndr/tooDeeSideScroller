@@ -11,6 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.logic.GameLogic;
 import com.mygdx.game.model.Player;
 
+import javax.xml.soap.Text;
 import java.util.EventListener;
 import java.util.LinkedList;
 
@@ -28,6 +29,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	static Texture groundText;
 	static Texture sky;
 	static String dir = "core/assets/";
+	static Texture bullet;
 
 
 	@Override
@@ -97,5 +99,9 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 	}
 
+	public static Texture getBulletTexture(){
+		return bullet;
+	}
+//
 
 }
