@@ -6,18 +6,16 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.mygdx.game.logic.GameLogic;
 import com.mygdx.game.model.Player;
 
-import java.util.EventListener;
 import java.util.LinkedList;
 
 public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 
 	static SpriteBatch batch;
+	static Player player;
 
 	//Lists
 	static LinkedList<Rectangle> groundList;
@@ -28,7 +26,8 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	static Texture groundText;
 	static Texture sky;
 	static String dir = "core/assets/";
-	static Texture bullet;
+	static Texture bulletText;
+	static Texture playerText;
 
 
 
@@ -37,6 +36,8 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		batch = new SpriteBatch();
 		GameLogic logic = new GameLogic();
 		logic.initiate();
+		playerText = new Texture(dir + "bodyIdle.png");
+		player = new Player(playerText, null);
 		worldInit();
 
 
@@ -49,12 +50,17 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		batch.begin();
 		drawGround();
 		drawSky();
+		drawPlayer();
 		collisionDetect();
 		batch.end();
 	}
 
 	private void collisionDetect() {
 
+	}
+
+	public void drawPlayer(){
+		batch.draw(player.getSkinIdle(), 0,0);
 	}
 
 	public void drawGround(){
@@ -101,7 +107,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 
 	public static Texture getBulletTexture() {
-		return bullet;
+		return bulletText;
 	}
 
 
