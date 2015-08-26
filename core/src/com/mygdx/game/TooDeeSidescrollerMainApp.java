@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.logic.GameLogic;
 import com.mygdx.game.model.Player;
 
@@ -17,6 +19,7 @@ import java.util.LinkedList;
 public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 	private OrthographicCamera camera;
+	private Stage stage;
 	static SpriteBatch batch;
 	static Player player;
 
@@ -42,6 +45,8 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		camera = new OrthographicCamera(30, 30 * (h / w));
 		camera.position.set(camera.viewportWidth / 2f, camera.viewportHeight / 2f, 0);
 		camera.update();
+		stage = new Stage(new ScreenViewport());
+		Gdx.input.setInputProcessor(stage);
 		GameLogic logic = new GameLogic();
 		logic.initiate();
 		playerInit();
@@ -70,12 +75,14 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		batch.setProjectionMatrix(camera.combined);
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+		stage.act();
+		stage.draw();
+		collisionDetect();
 		batch.begin();
 		drawGround();
 		drawSky();
 		drawPlayer();
-		collisionDetect();
+
 		batch.end();
 	}
 
@@ -152,6 +159,10 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 	}
 
+	public void dispose(){
+		stage.dispose();
+
+	}
 
 	public static Texture getBulletTexture() {
 		return bulletText;
