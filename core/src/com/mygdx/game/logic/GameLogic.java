@@ -2,6 +2,7 @@ package com.mygdx.game.logic;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.model.Enemy;
+import com.mygdx.game.model.Item;
 import com.mygdx.game.model.Player;
 
 import java.util.ArrayList;
@@ -13,7 +14,18 @@ public class GameLogic {
 
 
     private ArrayList<Enemy> activeEnemies;
+    private ArrayList<Item> visibleItems;
+
     private Player player;
+    public GameLogic(){
+
+    }
+
+    public void initiate() {
+    activeEnemies = new ArrayList<>();
+    visibleItems = new ArrayList<>();
+
+    }
 
     public ArrayList<Enemy> getActiveEnemies() {
         return activeEnemies;
@@ -31,13 +43,7 @@ public class GameLogic {
         this.player = player;
     }
 
-    public GameLogic(){
-
-    }
-
-    public void initiate() {
 
 
 
-    }
 }

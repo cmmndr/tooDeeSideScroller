@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.game.logic.GameLogic;
 
 public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
+	private static Texture bulletTexture;
 	SpriteBatch batch;
 	Texture img;
 
@@ -26,5 +27,10 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(img, 0, 0);
 		batch.end();
+	}
+
+	public static Texture getBulletTexture() {
+	return bulletTexture;
+
 	}
 }

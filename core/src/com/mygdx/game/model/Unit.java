@@ -12,11 +12,15 @@ public class Unit {
 
     private int posX;
     private int posY;
+    private int height;
+    private int width;
     private Texture skinIdle;
     private ArrayList<Texture> skinMove;
     private int speed;
     private int life;
     private int gravity;
+    private int damage;
+    private int direction;
 
 
     public Unit(Texture skinIdle, ArrayList<Texture> skinMove) {
@@ -94,7 +98,43 @@ public class Unit {
 
 
 
+    public int getHeight() {
+        return height;
+    }
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
+    public int getWidth() {
+        return width;
+    }
 
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getGravity() {
+        return gravity;
+    }
+
+    public void setGravity(int gravity) {
+        this.gravity = gravity;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 }
