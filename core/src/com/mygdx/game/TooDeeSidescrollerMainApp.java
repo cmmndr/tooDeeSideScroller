@@ -9,11 +9,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
-	private int t;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		img = new Texture("core/assets/badlogic.jpg");
 	}
 
 	@Override
