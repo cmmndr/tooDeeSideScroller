@@ -60,7 +60,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	}
 
 	public void drawPlayer(){
-		batch.draw(player.getSkinIdle(), 0,0);
+		batch.draw(player.getSkinIdle(), 0, 31);
 	}
 
 	public void drawGround(){
