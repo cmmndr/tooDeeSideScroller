@@ -9,12 +9,15 @@ public class Gameworld {
 
     public Rectangle ground;
 
+
     public Gameworld(){
         ground = new Rectangle();
         ground.setHeight(300);
         ground.setWidth(1200);
 
     }
+
+
 
 
 }
