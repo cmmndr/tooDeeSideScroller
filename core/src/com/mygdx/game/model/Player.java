@@ -1,7 +1,6 @@
 package com.mygdx.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.mygdx.game.logic.GameLogic;
 
 import java.util.ArrayList;
 
@@ -14,8 +13,8 @@ public class Player extends Unit{
 
 
 
-    public Player(Texture skinIdle, ArrayList<Texture> skinMove) {
-        super(skinIdle, skinMove);
+    public Player(int posX, int posY, Texture skinIdle, ArrayList<Texture> skinMove) {
+        super(posX, posY, skinIdle, skinMove);
         shotsFired = new ArrayList<>();
     }
 

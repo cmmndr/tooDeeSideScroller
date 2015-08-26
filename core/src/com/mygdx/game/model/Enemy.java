@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 public class Enemy extends Unit {
 
-    public Enemy(Texture skinIdle, ArrayList<Texture> skinMove) {
-        super(skinIdle, skinMove);
+    public Enemy(int posX, int posY, Texture skinIdle, ArrayList<Texture> skinMove) {
+        super(posX, posY, skinIdle, skinMove);
     }
 }
 

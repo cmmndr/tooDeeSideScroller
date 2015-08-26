@@ -33,14 +33,21 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 
 	@Override
 	public void create () {
+
 		batch = new SpriteBatch();
 		GameLogic logic = new GameLogic();
 		logic.initiate();
-		playerText = new Texture(dir + "bodyIdle.png");
-		player = new Player(playerText, null);
+		playerInit();
 		worldInit();
 
 
+	}
+
+	private void playerInit() {
+		int playerStartx = 0;
+		int playerStarty = 30;
+		playerText = new Texture(dir + "bodyIdle.png");
+		player = new Player(playerStartx, playerStarty, playerText, null);
 	}
 
 	@Override
@@ -60,7 +67,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 	}
 
 	public void drawPlayer(){
-		batch.draw(player.getSkinIdle(), 0, 31);
+		batch.draw(player.getSkinIdle(), player.getPosX(), player.getPosY());
 	}
 
 	public void drawGround(){
@@ -98,7 +105,6 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		ground.setY(0);
 		ground.setWidth(800);
 		ground.setHeight(30);
-		int i;
 		skyList = new LinkedList<Texture>();
 		sky = new Texture(dir + "sky.png");
 

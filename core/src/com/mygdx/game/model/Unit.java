@@ -22,9 +22,11 @@ public class Unit extends Actor{
     private int direction;
 
 
-    public Unit(Texture skinIdle, ArrayList<Texture> skinMove) {
+    public Unit(int posX, int posY, Texture skinIdle, ArrayList<Texture> skinMove) {
         this.skinIdle = skinIdle;
         this.skinMove = skinMove;
+        this.posX = posX;
+        this.posY = posY;
     }
 
 
