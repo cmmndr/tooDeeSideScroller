@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Unit extends Actor{
 
-
+    private boolean idle;
     private int posX;
     private int posY;
     private Texture skinIdle;
@@ -27,6 +27,7 @@ public class Unit extends Actor{
         this.skinMove = skinMove;
         this.posX = posX;
         this.posY = posY;
+        this.idle = false;
     }
 
 
@@ -118,5 +119,9 @@ public class Unit extends Actor{
 
     public void setDirection(int direction) {
         this.direction = direction;
+    }
+
+    public boolean idle() {
+        return idle;
     }
 }
