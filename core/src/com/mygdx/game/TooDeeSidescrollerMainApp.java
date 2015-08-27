@@ -63,9 +63,7 @@ public class TooDeeSidescrollerMainApp extends ApplicationAdapter {
 		player = new Player(playerStartx, playerStarty, playerText, movingList);
 		Texture right = new Texture(dir + "movingR.png");
 		Texture left = new Texture(dir + "movingL.png");
-
-
-		movingList.add(0,left);
+		movingList.add(0, left);
 		movingList.add(1, right);
 		stage.addActor(player);
 		Gdx.input.setInputProcessor(stage);
